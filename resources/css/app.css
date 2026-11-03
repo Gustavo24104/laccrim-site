@@ -6,9 +6,40 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primaria: oklch(0.2136 0.0483 257.95);
-    --color-destaque: oklch(0.7096 0.1338 87.18);
-    --color-destaqueEscuro: oklch(0.4559 0.0863 87.18);
-    --color-fundo: oklch(1 0 0);
-    --color-texto: oklch(0.3351 0.0331 260.91);
+    --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+
+    --color-primaria: #0a192f;
+    --color-primaria-claro: #112a4d;
+    --color-destaque: #c59b27;
+    --color-destaque-claro: #d9b44a;
+    --color-fundo: #ffffff;
+    --color-fundo-alt: #f7fafc;
+    --color-texto: #2d3748;
+    --color-texto-suave: #4a5568;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-fundo font-sans text-texto antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply font-serif;
+    }
+
+    :focus-visible {
+        @apply outline-3 outline-offset-2 outline-destaque;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+    }
 }
