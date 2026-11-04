@@ -3,7 +3,7 @@
 @php
     $classesVariante = match ($variante) {
         'secundario' => 'bg-primaria text-white hover:bg-primaria-claro',
-        'contorno' => 'border border-primaria text-primaria hover:bg-primaria hover:text-white',
+        'contorno' => 'border border-titulo text-titulo hover:bg-primaria hover:text-white',
         'contorno-claro' => 'border border-white/70 text-white hover:bg-white/10',
         default => 'bg-destaque text-primaria hover:bg-destaque-claro',
     };

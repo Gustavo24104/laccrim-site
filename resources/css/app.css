@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
@@ -16,7 +18,24 @@
     --color-fundo-alt: #f7fafc;
     --color-texto: #2d3748;
     --color-texto-suave: #4a5568;
+    --color-titulo: #0a192f;
+    --color-superficie: #ffffff;
+    --color-linha: #e2e8f0;
 }
+    .dark {
+        --color-fundo: #000000;
+        --color-fundo-alt: #000111;
+        --color-superficie: #000111;
+        --color-linha: #24384f;
+        --color-primaria: #010913;
+        --color-primaria-claro: #071630;
+        --color-circulo-dark: #c59b27;
+        --color-titulo: #f3f6f8;
+        --color-texto: #d5dde6;
+        --color-texto-suave: #b0b893;
+        --color-destaque: #c59b27;
+        --color-destaque-claro: #ecd48a;
+    }
 
 @layer base {
     html {

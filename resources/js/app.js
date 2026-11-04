@@ -27,3 +27,23 @@ if (botaoMenu && menu) {
         }
     });
 }
+
+const botaoTema = document.querySelector('[data-tema-alternar]');
+
+botaoTema?.addEventListener('click', async () => {
+    const escuro = document.documentElement.classList.toggle('dark');
+
+    botaoTema.setAttribute('aria-pressed', String(escuro));
+    botaoTema.setAttribute('aria-label', escuro ? 'Ativar tema claro' : 'Ativar tema escuro');
+
+    await fetch ('/tema', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+        },
+        body: JSON.stringify({
+            tema: escuro ? 'escuro' : 'claro',
+        }),
+    })
+})

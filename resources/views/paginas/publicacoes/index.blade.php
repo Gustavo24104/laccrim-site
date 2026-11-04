@@ -17,8 +17,8 @@
                                 @if ($filtro['ativo']) aria-current="true" @endif
                                 @class([
                                     'inline-flex rounded-full px-4 py-2 text-sm font-semibold transition-colors',
-                                    'bg-primaria text-white' => $filtro['ativo'],
-                                    'bg-white text-primaria ring-1 ring-slate-200 hover:bg-fundo-alt' => ! $filtro['ativo'],
+                                    'bg-primaria text-white dark:bg-destaque! dark:text-fundo!' => $filtro['ativo'],
+                                    'bg-superficie text-titulo ring-1 ring-slate-200 hover:bg-fundo-alt' => ! $filtro['ativo'],
                                 ])
                             >{{ $filtro['rotulo'] }}</a>
                         </li>
@@ -41,7 +41,7 @@
                 @if ($listagem['categoria_consulta'])
                     <input type="hidden" name="categoria" value="{{ $listagem['categoria_consulta'] }}">
                 @endif
-                <button type="submit" class="inline-flex items-center justify-center rounded-lg bg-primaria px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primaria-claro">
+                <button type="submit" class="inline-flex items-center justify-center rounded-lg bg-primaria px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primaria-claro dark:bg-destaque! dark:text-fundo! dark:hover:bg-destaque-claro!">
                     Buscar
                 </button>
             </form>
@@ -57,18 +57,18 @@
                                     <x-ui.badge>{{ $publicacao['categoria'] }}</x-ui.badge>
                                     <time datetime="{{ $publicacao['data_iso'] }}" class="text-sm text-texto-suave">{{ $publicacao['data_formatada'] }}</time>
                                 </div>
-                                <h2 class="text-xl font-bold leading-snug text-primaria">{{ $publicacao['titulo'] }}</h2>
+                                <h2 class="text-xl font-bold leading-snug text-titulo">{{ $publicacao['titulo'] }}</h2>
                                 <p class="flex-1 leading-relaxed text-texto-suave">{{ $publicacao['resumo'] }}</p>
                                 <div class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4 text-sm">
                                     <span class="text-texto-suave">{{ $publicacao['autor'] }}</span>
                                     <div class="flex items-center gap-4">
                                         @if ($publicacao['download'])
-                                            <a href="{{ $publicacao['download']['href'] }}" download="{{ $publicacao['download']['nome'] }}" class="inline-flex items-center gap-1 font-semibold text-primaria hover:text-destaque">
+                                            <a href="{{ $publicacao['download']['href'] }}" download="{{ $publicacao['download']['nome'] }}" class="inline-flex items-center gap-1 font-semibold text-titulo hover:text-destaque">
                                                 <x-ui.icone nome="download" class="size-4" />
                                                 {{ $publicacao['download']['rotulo'] }}
                                             </a>
                                         @endif
-                                        <a href="{{ $publicacao['href'] }}" class="inline-flex items-center gap-1 font-semibold text-primaria hover:text-destaque">
+                                        <a href="{{ $publicacao['href'] }}" class="inline-flex items-center gap-1 font-semibold text-titulo hover:text-destaque">
                                             Visualizar<span class="sr-only">: {{ $publicacao['titulo'] }}</span>
                                             <x-ui.icone nome="seta" class="size-4" />
                                         </a>

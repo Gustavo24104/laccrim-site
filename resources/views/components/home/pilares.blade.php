@@ -8,10 +8,10 @@
             @foreach ($dados['itens'] as $pilar)
                 <li>
                     <x-ui.card class="h-full border-t-4 border-t-destaque">
-                        <span class="flex size-12 items-center justify-center rounded-full bg-primaria text-destaque">
+                        <span class="flex size-12 items-center justify-center rounded-full bg-primaria-claro text-destaque dark:bg-(--color-circulo-dark) dark:text-[#0a192f]">
                             <x-ui.icone :nome="$pilar['icone']" />
                         </span>
-                        <h3 class="text-xl font-bold text-primaria">{{ $pilar['titulo'] }}</h3>
+                        <h3 class="text-xl font-bold text-titulo">{{ $pilar['titulo'] }}</h3>
                         <p class="leading-relaxed text-texto-suave">{{ $pilar['descricao'] }}</p>
                     </x-ui.card>
                 </li>
