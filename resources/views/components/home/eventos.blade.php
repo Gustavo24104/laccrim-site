@@ -18,7 +18,7 @@
                                 <x-ui.badge variante="primaria">{{ $evento['categoria'] }}</x-ui.badge>
                                 <x-ui.badge :variante="$evento['inscricoes'] === 'abertas' ? 'destaque' : 'neutro'">{{ $evento['situacao'] }}</x-ui.badge>
                             </div>
-                            <h3 class="text-xl font-bold leading-snug text-primaria">{{ $evento['titulo'] }}</h3>
+                            <h3 class="text-xl font-bold leading-snug text-titulo">{{ $evento['titulo'] }}</h3>
                             <p class="flex-1 leading-relaxed text-texto-suave">{{ $evento['resumo'] }}</p>
                             <dl class="flex flex-col gap-2 border-t border-slate-100 pt-4 text-sm">
                                 <div class="flex items-center gap-2">
@@ -30,7 +30,7 @@
                                     <dd>{{ $evento['local'] }}</dd>
                                 </div>
                             </dl>
-                            <a href="{{ $dados['botao']['href'] }}" class="inline-flex w-fit items-center gap-1 text-sm font-semibold text-primaria hover:text-destaque">
+                            <a href="{{ $dados['botao']['href'] }}" class="inline-flex w-fit items-center gap-1 text-sm font-semibold text-titulo hover:text-destaque">
                                 Ver detalhes<span class="sr-only">: {{ $evento['titulo'] }}</span>
                                 <x-ui.icone nome="seta" class="size-4" />
                             </a>

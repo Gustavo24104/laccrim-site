@@ -13,7 +13,7 @@
                     $classes = [
                         'inline-flex min-w-11 items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold',
                         'bg-primaria text-white' => $link['active'],
-                        'text-primaria hover:bg-fundo-alt' => ! $link['active'] && $link['url'],
+                        'text-titulo hover:bg-fundo-alt' => ! $link['active'] && $link['url'],
                         'text-texto-suave' => ! $link['url'],
                     ];
                 @endphp

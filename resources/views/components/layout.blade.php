@@ -11,7 +11,7 @@
 @endphp
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" @class(['dark' => request()->cookie('tema') === 'escuro'])>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,8 @@
     <meta property="og:description" content="{{ $descricaoPagina }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <link rel="canonical" href="{{ url()->current() }}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

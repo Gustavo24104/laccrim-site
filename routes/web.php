@@ -18,3 +18,8 @@ Route::get('/protocolo-virtual', PaginaEmConstrucaoController::class)->name('pro
 Route::get('/portal', PaginaEmConstrucaoController::class)->name('portal')->defaults('titulo', 'Portal da Liga');
 Route::get('/politica-de-privacidade', PaginaEmConstrucaoController::class)->name('privacidade')->defaults('titulo', 'Política de Privacidade');
 Route::get('/termos-de-uso', PaginaEmConstrucaoController::class)->name('termos')->defaults('titulo', 'Termos de Uso');
+
+Route::post('/tema', function (Illuminate\Http\Request $request) {
+    $tema = $request->string('tema')->value() === 'escuro' ? 'escuro':'clarfo';
+    return response()->noContent()->cookie('tema', $tema, 60*24*365);
+})->name('tema');

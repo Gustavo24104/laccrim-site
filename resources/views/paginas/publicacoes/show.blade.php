@@ -36,11 +36,11 @@
 
             @if ($publicacao['anexos'] !== [])
                 <section aria-labelledby="anexos-titulo" class="flex flex-col gap-4">
-                    <h2 id="anexos-titulo" class="font-serif text-2xl font-bold text-primaria">Arquivos anexos</h2>
+                    <h2 id="anexos-titulo" class="font-serif text-2xl font-bold text-titulo">Arquivos anexos</h2>
                     <ul class="flex flex-col gap-3">
                         @foreach ($publicacao['anexos'] as $anexo)
                             <li>
-                                <a href="{{ $anexo['href'] }}" download="{{ $anexo['nome'] }}" class="inline-flex items-center gap-2 font-semibold text-primaria hover:text-destaque">
+                                <a href="{{ $anexo['href'] }}" download="{{ $anexo['nome'] }}" class="inline-flex items-center gap-2 font-semibold text-titulo hover:text-destaque">
                                     <x-ui.icone nome="download" class="size-5" />
                                     {{ $anexo['nome'] }}
                                 </a>
