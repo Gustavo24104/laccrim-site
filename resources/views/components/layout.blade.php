@@ -42,7 +42,7 @@
     <main id="conteudo" tabindex="-1" class="flex-1 focus:outline-none">
         {{ $slot }}
     </main>
-
+k
     <x-site.footer :identidade="$identidade" :rodape="$rodape" />
 </body>
 </html>

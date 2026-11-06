@@ -28,7 +28,7 @@ return [
     'cores' => [],
 
     'menu' => [
-        ['rotulo' => 'Página Inicial', 'rota' => 'home'],
+        ['rotulo' => 'Página Inicial', 'rota' => 'home'], 
         ['rotulo' => 'Sobre Nós', 'rota' => 'sobre'],
         ['rotulo' => 'Notícias', 'rota' => 'noticias'],
         ['rotulo' => 'Editais e Atas', 'rota' => 'editais'],
