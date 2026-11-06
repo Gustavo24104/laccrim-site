@@ -2,7 +2,7 @@
 
 <div {{ $attributes->class(['flex max-w-2xl flex-col gap-3', 'mx-auto items-center text-center' => $centralizado]) }}>
     <span aria-hidden="true" class="h-1 w-12 rounded-full bg-destaque"></span>
-    <h2 @if ($id) id="{{ $id }}" @endif @class(['text-3xl font-bold md:text-4xl', 'text-white' => $claro, 'text-primaria' => ! $claro])>
+    <h2 @if ($id) id="{{ $id }}" @endif @class(['text-3xl font-bold md:text-4xl', 'text-white' => $claro, 'text-titulo' => ! $claro])>
         {{ $titulo }}
     </h2>
     @if ($subtitulo)

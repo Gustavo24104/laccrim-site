@@ -30,6 +30,17 @@
             </div>
 
             <button
+                type = "button"
+                data-tema-alternar
+                class="inline-flex size-10 items-center justify-center rounded-md text-white hover:bg-white/10"
+                aria-pressed="{{ request()->cookie('tema') === 'escuro' ? 'true' : 'false' }}"
+                aria-label="{{ request()->cookie('tema') === 'escuro' ? 'Ativar tema claro' : 'Ativar tema escuro' }}"
+            >
+                <x-ui.icone nome="sol" class="size-5 dark:hidden" />
+                <x-ui.icone nome="lua" class="hidden size-5 dark:block" />
+            </button>
+
+            <button
                 type="button"
                 class="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-white/10 lg:hidden"
                 data-menu-alternar

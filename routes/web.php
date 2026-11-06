@@ -21,3 +21,8 @@ Route::get('/portal', PortalController::class)->name('portal')->defaults('titulo
 Route::get('/politica-de-privacidade', PaginaEmConstrucaoController::class)->name('privacidade')->defaults('titulo', 'Política de Privacidade');
 Route::get('/termos-de-uso', PaginaEmConstrucaoController::class)->name('termos')->defaults('titulo', 'Termos de Uso');
 Route::get('/dashboard', DashboardController::class)->middleware('auth');
+
+Route::post('/tema', function (Illuminate\Http\Request $request) {
+    $tema = $request->string('tema')->value() === 'escuro' ? 'escuro':'clarfo';
+    return response()->noContent()->cookie('tema', $tema, 60*24*365);
+})->name('tema');

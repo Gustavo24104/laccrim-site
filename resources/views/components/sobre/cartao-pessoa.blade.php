@@ -19,7 +19,7 @@
 
 <article @if ($vazio) data-cartao-vazio @endif class="relative flex items-center overflow-hidden rounded-lg border border-slate-200 bg-fundo shadow-sm">
     @if ($corHierarquia !== null)
-        <span class="absolute top-4 right-4 inline-flex max-w-[9.5rem] items-center justify-center rounded-full px-3 py-1 text-center font-sans text-[0.65rem] font-semibold tracking-wider text-white uppercase sm:max-w-none sm:text-xs" @style(["background-color: {$corHierarquia}"])>{{ $hierarquia['rotulo'] }}</span>
+        <span class="absolute top-4 right-4 inline-flex max-w-[9.5rem] items-center justify-center rounded-full px-3 py-1 text-center font-sans text-[0.65rem] font-semibold tracking-wider text-white uppercase sm:max-w-none sm:text-xs dark:text-fundo" @style(["background-color: {$corHierarquia}"])>{{ $hierarquia['rotulo'] }}</span>
     @elseif ($vazio)
         <p class="sr-only">Professor orientador</p>
     @endif
@@ -48,9 +48,9 @@
         'pr-4 sm:pr-6' => $corHierarquia === null,
     ])>
         @if ($nome !== '')
-            <h3 class="font-serif text-xl font-semibold text-primaria sm:text-2xl">{{ $nome }}</h3>
+            <h3 class="font-serif text-xl font-semibold text-titulo sm:text-2xl">{{ $nome }}</h3>
         @else
-            <p class="min-h-8 font-serif text-xl font-semibold text-primaria sm:min-h-9 sm:text-2xl" aria-hidden="true"></p>
+            <p class="min-h-8 font-serif text-xl font-semibold text-titulo sm:min-h-9 sm:text-2xl" aria-hidden="true"></p>
         @endif
 
         <p class="min-h-5 font-sans text-sm font-semibold tracking-wider text-[#2d3748] uppercase">{{ $subtitulo }}</p>
@@ -59,7 +59,7 @@
             <p class="min-h-5 font-sans text-sm font-semibold tracking-wider text-[#2d3748] uppercase">{{ $complemento }}</p>
         @endif
 
-        <p class="font-sans text-sm font-semibold tracking-wider text-[#2d3748] uppercase">{{ $rotuloTexto }}</p>
+        <p class="font-sans text-sm font-semibold tracking-wider text-titulo uppercase">{{ $rotuloTexto }}</p>
         <p class="min-h-10 font-sans text-sm leading-relaxed whitespace-pre-line text-slate-500 normal-case">{{ $texto }}</p>
     </div>
 </article>

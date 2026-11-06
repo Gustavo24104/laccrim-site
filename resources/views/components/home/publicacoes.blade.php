@@ -11,12 +11,12 @@
                 @foreach ($dados['itens'] as $publicacao)
                     <li>
                         <x-ui.card class="h-full flex-row items-start">
-                            <span class="flex size-11 shrink-0 items-center justify-center rounded-lg bg-destaque/15 text-primaria">
+                            <span class="flex size-11 shrink-0 items-center justify-center rounded-lg bg-destaque/15 text-titulo>
                                 <x-ui.icone nome="documento" />
                             </span>
                             <div class="flex flex-col gap-2">
                                 <span class="text-xs font-semibold uppercase tracking-wide text-texto-suave">{{ $publicacao['tipo'] }}</span>
-                                <h3 class="text-lg font-bold leading-snug text-primaria">{{ $publicacao['titulo'] }}</h3>
+                                <h3 class="text-lg font-bold leading-snug text-titulo">{{ $publicacao['titulo'] }}</h3>
                                 <p class="text-sm text-texto-suave">
                                     {{ $publicacao['autor'] }} · <time datetime="{{ $publicacao['data_iso'] }}">{{ $publicacao['data_formatada'] }}</time>
                                 </p>

@@ -18,11 +18,11 @@
                                 <x-ui.badge>{{ $publicacao['categoria'] }}</x-ui.badge>
                                 <time datetime="{{ $publicacao['data_iso'] }}" class="text-sm text-texto-suave">{{ $publicacao['data_formatada'] }}</time>
                             </div>
-                            <h3 class="text-xl font-bold leading-snug text-primaria">{{ $publicacao['titulo'] }}</h3>
+                            <h3 class="text-xl font-bold leading-snug text-titulo">{{ $publicacao['titulo'] }}</h3>
                             <p class="flex-1 leading-relaxed text-texto-suave">{{ $publicacao['resumo'] }}</p>
                             <div class="flex items-center justify-between gap-3 border-t border-slate-100 pt-4 text-sm">
                                 <span class="text-texto-suave">{{ $publicacao['autor'] }}</span>
-                                <a href="{{ $publicacao['href'] ?? $dados['botao']['href'] }}" class="inline-flex items-center gap-1 font-semibold text-primaria hover:text-destaque">
+                                <a href="{{ $publicacao['href'] ?? $dados['botao']['href'] }}" class="inline-flex items-center gap-1 font-semibold text-tiutlo hover:text-destaque">
                                     Visualizar<span class="sr-only">: {{ $publicacao['titulo'] }}</span>
                                     <x-ui.icone nome="seta" class="size-4" />
                                 </a>
