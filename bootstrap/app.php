@@ -11,7 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function () {
-            Route::middleware(['web', 'auth', 'guest'])
+            Route::middleware(['web', 'auth'])
                 ->prefix('portal')
                 ->name('portal.')
                 ->group(base_path('routes/portal.php'));
