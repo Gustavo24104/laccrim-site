@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Portal;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Auth;
+
 
 class PortalController extends Controller
 {
     public function __invoke(): View
     {
-        return view('auth.login', ['titulo' => 'Portal']);
+        return view('paginas.portal.auth.login', ['titulo' => 'Portal']);
     }
-
 }

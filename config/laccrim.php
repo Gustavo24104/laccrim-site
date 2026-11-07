@@ -36,7 +36,7 @@ return [
         ['rotulo' => 'Protocolo Virtual', 'rota' => 'protocolo'],
     ],
 
-    'menu_destaque' => ['rotulo' => 'Portal da Liga', 'rota' => 'portal'],
+    'menu_destaque' => ['rotulo' => 'Portal da Liga', 'rota' => 'login'],
 
     'rodape' => [
         'instituicao' => 'Faculdade de Direito "Prof. Jacy de Assis" – FADIR/UFU',

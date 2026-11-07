@@ -7,7 +7,7 @@ use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Http\Controllers\RegistroController;
-use App\Models\Convite;
+use App\Models\Portal\Convite;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -37,7 +37,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
         Fortify::loginView(function () {
-            return view('auth.login', ['titulo' => 'Portal']);
+            return view('paginas.portal.auth.login', ['titulo' => 'Portal']);
         });
 
         Fortify::registerView(function(Request $req) {
@@ -48,7 +48,7 @@ class FortifyServiceProvider extends ServiceProvider
                 !$consulta->exists())) {
                     abort(403, 'Token invalido');
             }
-            return view('auth.register', 
+            return view('paginas.portal.auth.register', 
             [
                 'titulo' => 'Registro',
                 'email_registrado' => $consulta->value('email'),

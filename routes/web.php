@@ -20,8 +20,8 @@ Route::get('/eventos', PaginaEmConstrucaoController::class)->name('eventos')->de
 Route::get('/protocolo-virtual', PaginaEmConstrucaoController::class)->name('protocolo')->defaults('titulo', 'Protocolo Virtual');
 Route::get('/politica-de-privacidade', PaginaEmConstrucaoController::class)->name('privacidade')->defaults('titulo', 'Política de Privacidade');
 Route::get('/termos-de-uso', PaginaEmConstrucaoController::class)->name('termos')->defaults('titulo', 'Termos de Uso');
-Route::get('/portal', PortalController::class)->name('portal')->defaults('titulo', 'Portal da Liga')->middleware('guest');
-Route::get('/dashboard', DashboardController::class)->middleware('auth');
+// Route::get('/portal', PortalController::class)->name('portal')->defaults('titulo', 'Portal da Liga')->middleware('guest');
+// Route::get('/dashboard', DashboardController::class)->middleware('auth');
 
 
 Route::post('/tema', function (Illuminate\Http\Request $request) {

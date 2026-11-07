@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'home' => '/dashboard',
+    'home' => '/portal/dashboard',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => 'portal/',
 
     'domain' => null,
 
