@@ -18,11 +18,10 @@ Route::get('/editais-e-atas', [PublicacaoController::class, 'index'])->name('edi
 Route::get('/editais-e-atas/{publicacao}', [PublicacaoController::class, 'show'])->name('editais.show')->where('publicacao', '[a-z0-9]+(?:-[a-z0-9]+)*');
 Route::get('/eventos', PaginaEmConstrucaoController::class)->name('eventos')->defaults('titulo', 'Eventos');
 Route::get('/protocolo-virtual', PaginaEmConstrucaoController::class)->name('protocolo')->defaults('titulo', 'Protocolo Virtual');
-Route::get('/portal', PortalController::class)->name('portal')->defaults('titulo', 'Portal da Liga')->middleware('guest');
 Route::get('/politica-de-privacidade', PaginaEmConstrucaoController::class)->name('privacidade')->defaults('titulo', 'Política de Privacidade');
 Route::get('/termos-de-uso', PaginaEmConstrucaoController::class)->name('termos')->defaults('titulo', 'Termos de Uso');
+Route::get('/portal', PortalController::class)->name('portal')->defaults('titulo', 'Portal da Liga')->middleware('guest');
 Route::get('/dashboard', DashboardController::class)->middleware('auth');
-// Route::get('/registrar', RegistroController::class)->middleware('guest');
 
 
 Route::post('/tema', function (Illuminate\Http\Request $request) {
