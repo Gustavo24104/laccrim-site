@@ -6,7 +6,6 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
-use App\Http\Controllers\RegistroController;
 use App\Models\Portal\Convite;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -36,6 +35,8 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
+        
+        
         Fortify::loginView(function () {
             return view('paginas.portal.auth.login', ['titulo' => 'Portal']);
         });
@@ -54,6 +55,10 @@ class FortifyServiceProvider extends ServiceProvider
                 'email_registrado' => $consulta->value('email'),
                 'token' => $tokenRecebido,
             ]);
+        });
+
+        Fortify::twoFactorChallengeView(function () {
+            return view('paginas.portal.auth.dois_fatores_desafio', ['titulo' => 'Desafio 2 fatores']);
         });
 
 
