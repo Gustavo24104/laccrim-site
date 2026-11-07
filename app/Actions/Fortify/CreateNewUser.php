@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use App\Models\Convite;
+use Str;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -23,6 +24,9 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
+
+        $tokenEncrypt = $input['token']; //hash('sha512', $input['token']);
+        
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
@@ -35,14 +39,14 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'token' => ['required',
             'string',
-            Rule::exists('convites','token')->where(function ($query) {
+            Rule::exists('convites', $tokenEncrypt)->where(function ($query) {
                 $query->whereNull('usado_em')->where('expira_em', '>', now());
             }),
             ],
         ])->validate();
 
 
-        $convite = Convite::where('token', $input['token'])->first();
+        $convite = Convite::where('token', $tokenEncrypt)->first();
 
         if($convite->email !== $input['email']) {
         throw ValidationException::withMessages([

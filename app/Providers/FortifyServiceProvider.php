@@ -41,7 +41,7 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::registerView(function(Request $req) {
-            $tokenRecebido = $req->query('token');
+            $tokenRecebido = hash('sha512', $req->query('token'));
             $consulta = Convite::where('token', $tokenRecebido)->whereNull('usado_em')->where('expira_em', '>', now());
 
             if((!$tokenRecebido || 
