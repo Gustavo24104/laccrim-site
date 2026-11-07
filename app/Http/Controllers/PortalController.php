@@ -13,7 +13,4 @@ class PortalController extends Controller
         return view('auth.login', ['titulo' => 'Portal']);
     }
 
-    
-
-
 }

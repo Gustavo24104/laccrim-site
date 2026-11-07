@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaginaEmConstrucaoController;
 use App\Http\Controllers\PortalController;
 use App\Http\Controllers\PublicacaoController;
+use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\SobreController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ Route::get('/portal', PortalController::class)->name('portal')->defaults('titulo
 Route::get('/politica-de-privacidade', PaginaEmConstrucaoController::class)->name('privacidade')->defaults('titulo', 'Política de Privacidade');
 Route::get('/termos-de-uso', PaginaEmConstrucaoController::class)->name('termos')->defaults('titulo', 'Termos de Uso');
 Route::get('/dashboard', DashboardController::class)->middleware('auth');
+// Route::get('/registrar', RegistroController::class)->middleware('guest');
+
 
 Route::post('/tema', function (Illuminate\Http\Request $request) {
     $tema = $request->string('tema')->value() === 'escuro' ? 'escuro':'clarfo';
