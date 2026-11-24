@@ -40,6 +40,8 @@
 @layer base {
     html {
         scroll-behavior: smooth;
+        /* O overscroll do touchpad revela o fundo do documento. A cor institucional preenche essa faixa para o cabeçalho e o rodapé parecerem contínuos. */
+        background-color: var(--color-primaria);
     }
 
     body {

@@ -7,7 +7,7 @@
         <ul class="grid gap-6 md:grid-cols-3">
             @foreach ($dados['itens'] as $pilar)
                 <li>
-                    <x-ui.card class="h-full border-t-4 border-t-destaque">
+                    <x-ui.card class="h-full border-t-4 border-t-destaque dark:border-t-destaque">
                         <span class="flex size-12 items-center justify-center rounded-full bg-primaria-claro text-destaque dark:bg-(--color-circulo-dark) dark:text-[#0a192f]">
                             <x-ui.icone :nome="$pilar['icone']" />
                         </span>

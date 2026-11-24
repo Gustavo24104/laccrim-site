@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
 test('a página inicial exibe o hero com o título e os botões de ação', function () {
     $response = $this->get(route('home'));
 

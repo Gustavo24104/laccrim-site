@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
 test('a página sobre nós exibe o banner, as seções vazias e os cartões da hierarquia', function () {
     $html = $this->get(route('sobre'))->assertOk()->getContent();
 

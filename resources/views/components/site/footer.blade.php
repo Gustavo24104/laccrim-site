@@ -1,6 +1,6 @@
 @props(['identidade', 'rodape'])
 
-<footer class="bg-primaria text-white/85">
+<footer id="rodape" class="bg-primaria text-white/85">
     <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-3 lg:px-8">
         <div class="flex flex-col gap-4">
             <x-site.logo :identidade="$identidade" />

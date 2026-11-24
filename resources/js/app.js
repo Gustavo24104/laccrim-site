@@ -1,4 +1,9 @@
 import './leitor-estatuto';
+import './portal';
+
+if (document.querySelector('[data-editor-rico]')) {
+    import('./editor-rico').then(({ iniciarEditoresRicos }) => iniciarEditoresRicos());
+}
 
 const botaoMenu = document.querySelector('[data-menu-alternar]');
 const menu = botaoMenu ? document.getElementById(botaoMenu.getAttribute('aria-controls')) : null;

@@ -2,18 +2,20 @@
 
 namespace App\Actions\Fortify;
 
+use App\Contracts\UsuarioRepository;
+use App\Models\Portal\Convite;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
-use App\Models\Portal\Convite;
-use Str;
 
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
+
+    public function __construct(private UsuarioRepository $usuarios) {}
 
     /**
      * Validate and create a newly registered user.
@@ -24,9 +26,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-
-        $tokenEncrypt = $input['token']; //hash('sha512', $input['token']);
-        
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
@@ -38,31 +37,35 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
             'token' => ['required',
-            'string',
-            Rule::exists('convites', $tokenEncrypt)->where(function ($query) {
-                $query->whereNull('usado_em')->where('expira_em', '>', now());
-            }),
+                'string',
+                Rule::exists('convites', 'token')->where(function ($query) {
+                    $query->whereNull('usado_em')->where('expira_em', '>', now());
+                }),
             ],
-        ])->validate();
+        ], $this->mensagensSenha())->validate();
 
+        $convite = Convite::query()->with('perfil')->where('token', $input['token'])->firstOrFail();
 
-        $convite = Convite::where('token', $tokenEncrypt)->first();
-
-        if($convite->email !== $input['email']) {
-        throw ValidationException::withMessages([
-            'email' => 'O e-mail informado não corresponde ao e-mail do convite.'
+        if ($convite->email !== $input['email']) {
+            throw ValidationException::withMessages([
+                'email' => 'O e-mail informado não corresponde ao e-mail do convite.',
             ]);
         }
 
-        $convite->usado_em = now();
-        $convite->expira_em = now();
-        $convite->save();
+        if ($convite->perfil === null) {
+            throw ValidationException::withMessages([
+                'token' => 'Este convite não tem cargo definido. Solicite um novo convite.',
+            ]);
+        }
 
-        
-        return User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+        return DB::transaction(function () use ($convite, $input): User {
+            $convite->forceFill(['usado_em' => now(), 'expira_em' => now()])->save();
+
+            return $this->usuarios->criarComPerfil([
+                'name' => $input['name'],
+                'email' => $input['email'],
+                'password' => $input['password'],
+            ], $convite->perfil);
+        });
     }
 }

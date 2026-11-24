@@ -6,36 +6,60 @@
     </section>
 
     <section class="bg-fundo py-20">
-        <div class="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center sm:px-6">
-            {{-- <x-ui.empty-state>Página de login!</x-ui.empty-state> --}}
-            <x-ui.card> 
-                <b> Bem vindo de volta! </b>
-                <form method="post" action="{{ route('login') }}"> 
+        <div class="mx-auto flex max-w-2xl flex-col items-center gap-6 px-4 sm:px-6">
+            <x-ui.card class="w-full text-left dark:bg-primaria">
+                <h2 class="font-serif text-xl font-bold text-titulo">Portal LACCRIM - Login</h2>
+
+                @if (session('status'))
+                    <p class="text-sm text-texto" role="status">{{ session('status') }}</p>
+                @endif
+
+                <form method="post" action="{{ route('login') }}" class="flex flex-col gap-8">
                     @csrf
 
-                    <div style="margin-bottom: 15px;">
-                    <label for="email" style="display: block;">E-mail</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus style="width: 100%; padding: 8px;">
+                    <div class="flex flex-col gap-3">
+                        <label for="email" class="text-sm font-semibold text-titulo">E-mail</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value="{{ old('email') }}"
+                            required
+                            autofocus
+                            autocomplete="email"
+                            class="w-full rounded-lg border border-linha bg-[#e4ebf2] px-3 py-2 text-texto dark:bg-linha"
+                        >
+                        @error('email')
+                            <span class="text-sm text-red-600">{{ $message }}</span>
+                        @enderror
                     </div>
 
-
-                    <div style="margin-bottom: 15px;">
-                    <label for="password" style="display: block;">Senha</label>
-                    <input type="password" id="password" name="password" required style="width: 100%; padding: 8px;">
-                    {{-- tem q colocar opção de mostrar/esconder a senha --}}
+                    <div class="flex flex-col gap-3">
+                        <label for="password" class="text-sm font-semibold text-titulo">Senha</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            autocomplete="current-password"
+                            class="w-full rounded-lg border border-linha bg-[#e4ebf2] px-3 py-2 text-texto dark:bg-linha"
+                        >
+                        @error('password')
+                            <span class="text-sm text-red-600">{{ $message }}</span>
+                        @enderror
+                        <a href="{{ route('password.request') }}" class="self-end text-sm font-semibold text-texto underline underline-offset-4 dark:text-destaque">
+                            Esqueci a senha
+                        </a>
                     </div>
 
-                    <div> 
-                        <button type="submit" class="bg-destaque text-primaria hover:bg-destaque-claro border 
-                        border-primaria inline-flex items-center justify-center 
-                        gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-colors">
+                    <div class="flex items-center justify-start gap-6">
+                        <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-lg border border-primaria bg-destaque px-6 py-3 text-sm font-semibold text-primaria transition-colors hover:bg-destaque-claro">
                             Entrar
                         </button>
-                        {{-- <x-ui.button type="submit" > Entrar </x-ui.button> --}}
                     </div>
                 </form>
             </x-ui.card>
-            <x-ui.button :href="route('home')" variante="secundario">Voltar à Página Inicial</x-ui.button>
+            <x-ui.button :href="route('home')" variante="secundario" class="dark:bg-primaria dark:hover:bg-primaria-claro">Voltar à Página Inicial</x-ui.button>
         </div>
     </section>
 </x-layout>

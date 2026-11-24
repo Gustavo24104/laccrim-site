@@ -10,7 +10,7 @@
                     <h3 class="font-serif text-2xl font-semibold text-titulo">{{ $bloco['titulo'] }}</h3>
                     <div class="min-h-16">
                         @if (($bloco['texto'] ?? '') !== '')
-                            <p class="font-sans text-base leading-relaxed whitespace-pre-line text-slate-500 normal-case">{{ $bloco['texto'] }}</p>
+                            <x-ui.conteudo-rico :html="$bloco['texto']" class="font-sans text-base text-slate-500 normal-case" />
                         @endif
                     </div>
                 </section>

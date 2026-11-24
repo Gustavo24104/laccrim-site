@@ -2,12 +2,12 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaginaEmConstrucaoController;
+use App\Http\Controllers\Portal\VisualizarComoController;
 use App\Http\Controllers\PortalController;
 use App\Http\Controllers\PublicacaoController;
-use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\SobreController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -20,11 +20,13 @@ Route::get('/eventos', PaginaEmConstrucaoController::class)->name('eventos')->de
 Route::get('/protocolo-virtual', PaginaEmConstrucaoController::class)->name('protocolo')->defaults('titulo', 'Protocolo Virtual');
 Route::get('/politica-de-privacidade', PaginaEmConstrucaoController::class)->name('privacidade')->defaults('titulo', 'Política de Privacidade');
 Route::get('/termos-de-uso', PaginaEmConstrucaoController::class)->name('termos')->defaults('titulo', 'Termos de Uso');
+Route::post('/portal/visualizar-como', VisualizarComoController::class)->name('portal.visualizar-como');
+
 // Route::get('/portal', PortalController::class)->name('portal')->defaults('titulo', 'Portal da Liga')->middleware('guest');
 // Route::get('/dashboard', DashboardController::class)->middleware('auth');
 
+Route::post('/tema', function (Request $request) {
+    $tema = $request->string('tema')->value() === 'escuro' ? 'escuro' : 'clarfo';
 
-Route::post('/tema', function (Illuminate\Http\Request $request) {
-    $tema = $request->string('tema')->value() === 'escuro' ? 'escuro':'clarfo';
-    return response()->noContent()->cookie('tema', $tema, 60*24*365);
+    return response()->noContent()->cookie('tema', $tema, 60 * 24 * 365);
 })->name('tema');

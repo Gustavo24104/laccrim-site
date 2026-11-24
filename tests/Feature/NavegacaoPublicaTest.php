@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
 test('todas as páginas públicas respondem com sucesso', function (string $rota, string $titulo) {
     $this->get(route($rota))
         ->assertOk()
