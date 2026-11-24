@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Contracts\ConteudoDinamicoRepository;
 use App\Contracts\ConteudoSiteRepository;
+use App\Contracts\SanitizadorHtml;
 use App\Enums\HierarquiaCorpoSocial;
 
 /**
@@ -14,6 +15,7 @@ class SobreService
     public function __construct(
         private ConteudoSiteRepository $conteudoSite,
         private ConteudoDinamicoRepository $conteudoDinamico,
+        private SanitizadorHtml $sanitizador,
     ) {}
 
     /**
@@ -36,7 +38,10 @@ class SobreService
             ],
             'quem_somos' => [
                 'titulo' => (string) ($pagina['quem_somos']['titulo'] ?? ''),
-                'blocos' => array_values($pagina['quem_somos']['blocos'] ?? []),
+                'blocos' => array_map(
+                    fn (array $bloco): array => [...$bloco, 'texto' => $this->sanitizador->limpar((string) ($bloco['texto'] ?? ''))],
+                    array_values($pagina['quem_somos']['blocos'] ?? []),
+                ),
             ],
             'estatuto' => [
                 'titulo' => (string) ($pagina['estatuto']['titulo'] ?? ''),

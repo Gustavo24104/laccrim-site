@@ -26,7 +26,7 @@
 
         <div class="flex items-center gap-3">
             <div class="hidden lg:block">
-                <x-ui.button :href="$itemMenuDestaque['href']" class="px-5 py-2.5">{{ $itemMenuDestaque['rotulo'] }}</x-ui.button>
+                <x-ui.button :href="$itemMenuDestaque['href']" target="_blank" rel="noopener" class="px-5 py-2.5">{{ $itemMenuDestaque['rotulo'] }}<span class="sr-only"> (abre em nova aba)</span></x-ui.button>
             </div>
 
             <button
@@ -69,7 +69,7 @@
                 </li>
             @endforeach
             <li class="pt-3">
-                <x-ui.button :href="$itemMenuDestaque['href']" class="w-full">{{ $itemMenuDestaque['rotulo'] }}</x-ui.button>
+                <x-ui.button :href="$itemMenuDestaque['href']" target="_blank" rel="noopener" class="w-full">{{ $itemMenuDestaque['rotulo'] }}<span class="sr-only"> (abre em nova aba)</span></x-ui.button>
             </li>
         </ul>
     </nav>

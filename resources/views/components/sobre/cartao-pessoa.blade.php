@@ -17,7 +17,7 @@
         : null;
 @endphp
 
-<article @if ($vazio) data-cartao-vazio @endif class="relative flex items-center overflow-hidden rounded-lg border border-slate-200 bg-fundo shadow-sm">
+<article @if ($vazio) data-cartao-vazio @endif class="relative flex items-center overflow-hidden rounded-lg border border-slate-200 bg-fundo shadow-sm dark:border-transparent dark:shadow-none">
     @if ($corHierarquia !== null)
         <span class="absolute top-4 right-4 inline-flex max-w-[9.5rem] items-center justify-center rounded-full px-3 py-1 text-center font-sans text-[0.65rem] font-semibold tracking-wider text-white uppercase sm:max-w-none sm:text-xs dark:text-fundo" @style(["background-color: {$corHierarquia}"])>{{ $hierarquia['rotulo'] }}</span>
     @elseif ($vazio)

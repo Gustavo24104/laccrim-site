@@ -24,7 +24,10 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+    @if ($areaEmPrevia)
+        <meta name="robots" content="noindex, nofollow">
+    @endif
+
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -38,12 +41,17 @@
         Pular para o conteúdo
     </a>
 
+    @if ($areaEmPrevia)
+        <div class="bg-amber-100 px-4 py-2 text-center text-sm font-semibold text-amber-900" role="status">
+            Pré-visualização do rascunho de "{{ $areaEmPrevia->pagina }} – {{ $areaEmPrevia->rotulo }}". Este conteúdo ainda não foi publicado.
+        </div>
+    @endif
+
     <x-site.header :identidade="$identidade" :itens-menu="$itensMenu" :item-menu-destaque="$itemMenuDestaque" />
 
     <main id="conteudo" tabindex="-1" class="flex-1 focus:outline-none">
         {{ $slot }}
     </main>
-k
     <x-site.footer :identidade="$identidade" :rodape="$rodape" />
 </body>
 </html>

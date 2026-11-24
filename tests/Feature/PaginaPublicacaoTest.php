@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
 test('sem registros do CMS as listagens ficam vazias', function () {
     $this->get(route('noticias'))
         ->assertOk()

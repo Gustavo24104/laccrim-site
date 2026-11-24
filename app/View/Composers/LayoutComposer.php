@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use App\Contracts\ConteudoSiteRepository;
+use App\Services\Portal\Cms\PreviaConteudoService;
 use App\Services\ResolvedorDeLink;
 use Illuminate\View\View;
 
@@ -14,6 +15,7 @@ class LayoutComposer
     public function __construct(
         private ConteudoSiteRepository $conteudoSite,
         private ResolvedorDeLink $resolvedorDeLink,
+        private PreviaConteudoService $previa,
     ) {}
 
     public function compose(View $view): void
@@ -27,6 +29,7 @@ class LayoutComposer
             'itemMenuDestaque' => $this->resolverLink($this->conteudoSite->itemMenuDestaque()),
             'rodape' => $rodape,
             'coresPersonalizadas' => $this->coresValidas(),
+            'areaEmPrevia' => $this->previa->areaEmPrevia(),
         ]);
     }
 

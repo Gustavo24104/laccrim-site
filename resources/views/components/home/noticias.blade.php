@@ -4,7 +4,7 @@
     <div class="mx-auto flex max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <x-ui.section-heading id="noticias-titulo" :titulo="$dados['titulo']" :subtitulo="$dados['subtitulo'] ?? null" />
-            <x-ui.button :href="$dados['botao']['href']" variante="contorno" class="w-fit shrink-0">{{ $dados['botao']['rotulo'] }}</x-ui.button>
+            <x-ui.button :href="$dados['botao']['href']" variante="contorno" class="w-fit shrink-0 dark:hover:bg-destaque! dark:hover:text-primaria!">{{ $dados['botao']['rotulo'] }}</x-ui.button>
         </div>
 
         @if ($dados['itens'] === [])
